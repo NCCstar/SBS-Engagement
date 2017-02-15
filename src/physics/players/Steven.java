@@ -137,7 +137,12 @@ public class Steven extends Player
                 break;
             case 1:
                 yVel = -1;
-                xVel = .5;
+                if(isRight)
+                    xVel = .5;
+                else {
+                    xVel = -.5;
+                    reverseAttack(2);
+                }
                 break;
             case 2:
                 yVel=0;
@@ -158,7 +163,10 @@ public class Steven extends Player
                 oldYVel = xVel;
                 return airAttacks<2;
             case 1:
-                oldXVel = xVel;
+                isRight = (oldXVel = xVel)>0;
+                //isRight=xVel>0;
+                if(!isRight)
+                    reverseAttack(1);
                 return airAttacks<1;
             case 2:
                 return airAttacks<1;
@@ -166,5 +174,12 @@ public class Steven extends Player
                 return airAttacks<1;
         }
         return true;
+    }
+    private void reverseAttack(int atkCode)
+    {
+        for(int i=0;i<eventOffsetX[atkCode].size();i++)
+        {
+            eventOffsetX[atkCode].set(i,eventOffsetX[atkCode].get(i)*-1);
+        }
     }
 }
