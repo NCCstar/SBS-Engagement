@@ -12,11 +12,11 @@ public class Controller
     protected boolean keySh=false;
     protected boolean keyF=false;
 
-    protected boolean key4=false;
-    protected boolean key5=false;
-    protected boolean key6=false;
-    protected boolean key8=false;
-    protected boolean keyEn=false;
+    protected boolean keyI=false;
+    protected boolean keyJ=false;
+    protected boolean keyK=false;
+    protected boolean keyL=false;
+    protected boolean keyFs=false;
     protected boolean keyZe=false;
 
     public Controller()
@@ -80,22 +80,46 @@ public class Controller
             case KeyEvent.VK_F:keyF=true;
                 break;
 
-            case KeyEvent.VK_NUMPAD8:
-                if(key4)
+            case KeyEvent.VK_I:
+                keyI=true;
+                if(keyJ)
                     game.jump(1,4);
                 else
-                if(key6)
+                if(keyL)
                     game.jump(1,2);
                 else
                     game.jump(1,0);
                 break;
-            case KeyEvent.VK_NUMPAD4:key4=true;
+            case KeyEvent.VK_J:keyJ=true;
                 break;
-            case KeyEvent.VK_NUMPAD5:key5=true;
+            case KeyEvent.VK_K:keyK=true;
                 break;
-            case KeyEvent.VK_NUMPAD6:key6=true;
+            case KeyEvent.VK_L:keyL=true;
                 break;
-            case KeyEvent.VK_ENTER:keyEn=true;
+            case KeyEvent.VK_PERIOD:
+                keyFs=true;
+                if(keyJ==keyL)//not pointing l/r
+                {
+                    if(keyI==keyK)//not pointing u/d
+                    {
+                        game.attack(1,0);
+                        break;
+                    }
+                    //not l/r, either up or down
+                    if(keyI)
+                    {
+                        game.attack(1,1);
+                        break;
+                    }
+                    game.attack(1,3);
+                    break;
+                }//moving l/r
+                if(keyL)
+                {
+                    game.attack(1,2);
+                    break;
+                }
+                game.attack(1,4);
                 break;
             case KeyEvent.VK_NUMPAD0:keyZe=true;
                 break;
@@ -124,15 +148,15 @@ public class Controller
             case KeyEvent.VK_F:keyF=false;
                 break;
 
-            case KeyEvent.VK_NUMPAD4:key4=false;
+            case KeyEvent.VK_J:keyJ=false;
                 break;
-            case KeyEvent.VK_NUMPAD5:key5=false;
+            case KeyEvent.VK_K:keyK=false;
                 break;
-            case KeyEvent.VK_NUMPAD6:key6=false;
+            case KeyEvent.VK_L:keyL=false;
                 break;
-            case KeyEvent.VK_NUMPAD8:key8=false;
+            case KeyEvent.VK_I:keyI=false;
                 break;
-            case KeyEvent.VK_ENTER:keyEn=false;
+            case KeyEvent.VK_PERIOD:keyFs=false;
                 break;
             case KeyEvent.VK_NUMPAD0:keyZe=false;
                 break;

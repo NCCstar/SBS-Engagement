@@ -132,8 +132,8 @@ public class Steven extends Player
         switch(eventCode)
         {
             case 0:
-                yVel=oldYVel - .1;
-                xVel=oldXVel;
+                yVel=oldYVel * -1;
+                xVel=oldXVel * -1;
                 break;
             case 1:
                 yVel = -1;
@@ -160,11 +160,11 @@ public class Steven extends Player
         {
             case 0:
                 oldYVel = yVel;
-                oldYVel = xVel;
+                oldXVel = xVel;
                 return airAttacks<2;
             case 1:
-                isRight = (oldXVel = xVel)>0;
-                //isRight=xVel>0;
+                oldXVel = xVel;
+                isRight = facingRight;
                 if(!isRight)
                     reverseAttack(1);
                 return airAttacks<1;

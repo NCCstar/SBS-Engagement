@@ -436,9 +436,25 @@ public class Hiragana
     {
         String ans = "";
 
-        for(int i=0;i<ans.length();i++)
-        {
-
+        for(int i=0;i<ans.length();i++) {
+            switch (i)
+            {
+                case 'あ':
+                    ans+='a';
+                    break;
+                case 'い':
+                    ans+='i';
+                    break;
+                case 'え':
+                    ans+='e';
+                    break;
+                case 'お':
+                    ans+='o';
+                    break;
+                case 'う':
+                    ans+='u';
+                    break;
+            }
         }
 
         return ans;
