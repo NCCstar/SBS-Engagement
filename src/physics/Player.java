@@ -8,7 +8,6 @@ public abstract class Player extends Phys {
     public static final int MAX_EVENTS = 4;
 
     protected List<Hitbox> attacks;
-    protected boolean facingRight = true;
     protected boolean inAir = true;
     protected double airMove;
     protected double ffMulti;
@@ -94,12 +93,10 @@ public abstract class Player extends Phys {
                     case 2:
                         if (xVel < airMax)
                             xVel += airMove;
-                        facingRight = true;
                         break;
                     case 4:
                         if (-1 * xVel < airMax)
                             xVel -= airMove;
-                        facingRight = false;
                         break;
                     case 1:
                         if (numJumps < maxJumps) {
@@ -127,11 +124,9 @@ public abstract class Player extends Phys {
                         break;
                     case 2:
                         offsetX(landMove);
-                        facingRight = true;
                         break;
                     case 4:
                         offsetX(landMove * -1);
-                        facingRight = false;
                         break;
                     default:
                         break;

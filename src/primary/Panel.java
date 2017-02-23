@@ -21,7 +21,7 @@ public class Panel extends JPanel
         level = l;
         con = c;
         play[0] = new Steven(400,300);
-        play[1] = new Steven(600,300);
+        play[1] = new Mac(600,300);
     }
     public void paintComponent(Graphics g)
     {
@@ -65,11 +65,11 @@ public class Panel extends JPanel
             {
                 play[0].move(2);
             }
-            if(con.keyJ)
+            if(con.key4)
             {
                 play[1].move(4);
             }
-            if(con.keyL)
+            if(con.key6)
             {
                 play[1].move(2);
             }
@@ -82,7 +82,7 @@ public class Panel extends JPanel
             //end DEGUB
 
             play[0].tick(con.keyS);//ticks falling, events
-            play[1].tick(con.keyK);
+            play[1].tick(con.key5);
             //DEBUG TEXT
             g.fillRect(getWidth()-20,0,getWidth(),20);
         }
