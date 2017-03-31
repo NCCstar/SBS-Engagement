@@ -10,7 +10,7 @@ public class Driver
     private static Controller controller;
     public static void main(String[] arg)
     {
-        JFrame frame = new JFrame(Hiragana.toHiragana("Superibu Bashi Sibilingosu: Sucufele"));//superb bash siblings: scuffle
+        JFrame frame = new JFrame(Hiragana.toHiragana("mieru"));//superb bash siblings: scuffle
 
         Level level = new Last_Terminous();
 
