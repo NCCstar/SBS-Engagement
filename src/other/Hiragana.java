@@ -2,12 +2,20 @@ package other;
 //import java.util.*;
 public class Hiragana
 {
+    public static void main(String[] args)
+    {
+        System.out.println(toHiragana("The quick brown fox jumped over the lazy dog."));
+    }
     public static String toHiragana(String in)
     {
-        in = in.toLowerCase();
-        in = in.replace('l','r');
-        in = in.replace('c','k');
-        in = in.replace('f','h');
+        in = in.toUpperCase();
+        in = in.replace("TH","S");
+        in = in.replace("CK","K");
+        in = in.replace('L','R');
+        in = in.replace('C','K');
+        in = in.replace('Q','K');
+        in = in.replace('F','H');
+        in = in.replace('V','B');
 
         String ans = "";
         for(int i=0;i<in.length();i++)
@@ -20,19 +28,19 @@ public class Hiragana
                 {
                     switch(curr)
                     {
-                        case 'a':
+                        case 'A':
                             ans+='\u3042';
                             break;
-                        case 'i':
+                        case 'I':
                             ans+='\u3044';
                             break;
-                        case 'u':
+                        case 'U':
                             ans+='\u3046';
                             break;
-                        case 'e':
+                        case 'E':
                             ans+='\u3048';
                             break;
-                        case 'o':
+                        case 'O':
                             ans+='\u304A';
                             break;
                     }
@@ -41,75 +49,75 @@ public class Hiragana
                 {
                     switch(curr)
                     {
-                        case 'k':
+                        case 'K':
                             curr = in.charAt(++i);
                             switch(curr) {
-                                case 'a':
+                                case 'A':
                                     ans += '\u304B';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans += '\u304D';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans += '\u304F';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans += '\u3051';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans += '\u3053';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'k';
+                                    ans += '\u304F';
                                     break;
                             }
                             break;
-                        case 'g':
+                        case 'G':
                             curr = in.charAt(++i);
                             switch(curr) {
-                                case 'a':
+                                case 'A':
                                     ans += '\u304C';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans += '\u304E';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans += '\u3050';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans += '\u3052';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans += '\u3054';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'g';
+                                    ans += '\u3050';
                                     break;
                             }
                             break;
-                        case 's':
+                        case 'S':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3055';
                                     break;
-                                case 'h'://shi
+                                case 'H'://shi
                                     if(isVowel(in.charAt(i+1))) {
                                         i++;
                                         ans += '\u3057';//start with shi
                                         switch(in.charAt(i)){//add y-vowel
-                                            case 'a':
+                                            case 'A':
                                                 ans += '\u3083';
                                                 break;
                                             //no 'i'
-                                            case 'u':
+                                            case 'U':
                                                 ans += '\u3085';
                                                 break;
                                             //no 'e'??
-                                            case 'o':
+                                            case 'O':
                                                 ans += '\u3087';
                                                 break;
                                         }
@@ -119,62 +127,58 @@ public class Hiragana
                                         ans += "sh";
                                     }
                                     break;
-                                case 'i'://si -> shi
+                                case 'I'://si -> shi
                                     ans += '\u3057';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u3059';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u305B';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u305D';
                                     break;
                                 default:
                                     i--;
-                                    ans += 's';
+                                    ans += '\u3059';
                                     break;
                             }
                             break;
-                        case 'z':
+                        case 'Z':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3056';
                                     break;
-                                case 'h'://shi
+                                case 'H'://shi
                                     i++;
                                     ans+='\u3058';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u305A';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u305C';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u305E';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'z';
+                                    ans += '\u305A';
                                     break;
                             }
                             break;
-                        case 't':
+                        case 'T':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u305F';
                                     break;
-                                case 'h'://chi
-                                    i++;
-                                    ans+='\u3061';
-                                    break;
-                                case 's'://tsu
+                                case 'S'://tsu
                                     if(in.charAt(i+1)=='u') {
                                         i++;
                                         ans += '\u3064';
@@ -184,67 +188,67 @@ public class Hiragana
                                         ans += "ts";
                                     }
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans += '\u3064';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u3066';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u3068';
                                     break;
                                 default:
                                     i--;
-                                    ans += 't';
+                                    ans += '\u3064';
                                     break;
                             }
                             break;
-                        case 'd':
+                        case 'D':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3060';
                                     break;
-                                case 'i':
+                                case 'I':
                                     i++;
                                     ans+='\u3062';
                                     break;
-                                case 'u'://tsu
+                                case 'U':
                                     i++;
                                     ans+='\u3065';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u3067';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u3069';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'd';
+                                    ans += '\u3065';
                                     break;
                             }
                             break;
-                        case 'n':
+                        case 'N':
                             if(isVowel(in.charAt(i+1)))
                             {
                                 curr = in.charAt(++i);
                                 switch(curr)
                                 {
-                                    case 'a':
+                                    case 'A':
                                         ans+='\u306A';
                                         break;
-                                    case 'i':
+                                    case 'I':
                                         ans+='\u306B';
                                         break;
-                                    case 'u':
+                                    case 'U':
                                         ans+='\u306C';
                                         break;
-                                    case 'e':
+                                    case 'E':
                                         ans+='\u306D';
                                         break;
-                                    case 'o':
+                                    case 'O':
                                         ans+='\u306E';
                                         break;
                                 }
@@ -252,169 +256,169 @@ public class Hiragana
                             else
                                 ans+='\u3093';
                             break;
-                        case 'h':
+                        case 'H':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u306F';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans+='\u3072';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u3075';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u3078';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u307B';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'h';
+                                    ans += '\u3075';
                                     break;
                             }
                             break;
-                        case 'b':
+                        case 'B':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3070';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans+='\u3073';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u3076';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u3079';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u307C';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'b';
+                                    ans += '\u3076';
                                     break;
                             }
                             break;
-                        case 'p':
+                        case 'P':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3071';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans+='\u3074';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u3077';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u307A';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u307D';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'p';
+                                    ans += '\u3077';
                                     break;
                             }
                             break;
-                        case 'm':
+                        case 'M':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u307E';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans+='\u307F';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u3080';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u3081';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u3082';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'm';
+                                    ans += '\u3080';
                                     break;
                             }
                             break;
-                        case 'y':
+                        case 'Y':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3084';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u3086';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u3088';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'y';
+                                    ans += '\u3086';
                                     break;
                             }
                             break;
-                        case 'r':
+                        case 'R':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u3089';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans+='\u308A';
                                     break;
-                                case 'u':
+                                case 'U':
                                     ans+='\u308B';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u308C';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u308D';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'r';
+                                    ans += '\u308B';
                                     break;
                             }
                             break;
-                        case 'w':
+                        case 'W':
                             curr = in.charAt(++i);
                             switch(curr)
                             {
-                                case 'a':
+                                case 'A':
                                     ans+='\u308F';
                                     break;
-                                case 'i':
+                                case 'I':
                                     ans+='\u3090';
                                     break;
-                                case 'e':
+                                case 'E':
                                     ans+='\u3091';
                                     break;
-                                case 'o':
+                                case 'O':
                                     ans+='\u3092';
                                     break;
                                 default:
                                     i--;
-                                    ans += 'w';
+                                    ans += '\u3092';
                                     break;
                             }
                             break;
@@ -440,20 +444,21 @@ public class Hiragana
             switch (i)
             {
                 case 'あ':
-                    ans+='a';
+                    ans+='A';
                     break;
                 case 'い':
-                    ans+='i';
+                    ans+='I';
                     break;
                 case 'え':
-                    ans+='e';
+                    ans+='E';
                     break;
                 case 'お':
-                    ans+='o';
+                    ans+='O';
                     break;
                 case 'う':
-                    ans+='u';
+                    ans+='U';
                     break;
+
             }
         }
 
@@ -461,6 +466,6 @@ public class Hiragana
     }
     private static boolean isVowel(char in)
     {
-        return "aeiou".indexOf(in)!=-1;
+        return "AIEOU".indexOf(in)!=-1;
     }
 }
